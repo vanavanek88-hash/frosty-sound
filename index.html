@@ -179,7 +179,18 @@
     @keyframes download-pulse { 0%,100% { box-shadow:0 8px 28px rgba(71,177,219,.19),inset 0 1px rgba(255,255,255,.8); } 50% { box-shadow:0 10px 38px rgba(71,177,219,.42),0 0 0 7px rgba(131,224,255,.07),inset 0 1px rgba(255,255,255,.85); } }
     #downloadButton { animation:none; }
     #downloadButton:hover { animation-play-state:paused; }
-    footer { margin-top:55px;border-top:1px solid rgba(208,237,255,.1);padding:26px 0 35px;color:#8095a5;font-size:11px; }
+    .release-list { display:grid; gap:14px; max-width:860px; margin:auto; }
+.release-card { position:relative; overflow:hidden; padding:26px 30px; border-radius:22px; }
+.release-card::before { content:""; position:absolute; inset:0 auto 0 0; width:3px; background:linear-gradient(#9beaff,#7e91ed); }
+.release-head { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:14px; }
+.release-version { display:flex; align-items:center; gap:11px; font-size:19px; font-weight:650; letter-spacing:-.03em; }
+.release-badge { padding:5px 9px; border:1px solid rgba(131,224,255,.25); border-radius:999px; color:#a9eaff; background:rgba(131,224,255,.08); font-size:10px; font-weight:600; letter-spacing:.04em; }
+.release-card p { margin:0; color:#a9bbc9; font-size:13px; line-height:1.7; }
+.release-card ul { display:grid; gap:8px; margin:15px 0 0; padding-left:19px; color:#d1e0eb; font-size:13px; line-height:1.6; }
+.release-card li::marker { color:#8de6ff; }
+.release-date { color:#8197a7; font-size:11px; white-space:nowrap; }
+@media(max-width:600px) { .release-card { padding:22px 20px; } .release-head { align-items:flex-start; flex-direction:column; gap:9px; } }
+footer { margin-top:55px;border-top:1px solid rgba(208,237,255,.1);padding:26px 0 35px;color:#8095a5;font-size:11px; }
     .footer-row { display:flex;justify-content:space-between;align-items:center;gap:20px; }
     .footer-brand { color:#c6d9e5;font-weight:650; }
     .toast { position:fixed;z-index:20;left:50%;bottom:26px;transform:translate(-50%,18px);opacity:0;pointer-events:none;padding:13px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(9,23,36,.88);backdrop-filter:blur(16px);box-shadow:0 16px 40px rgba(0,0,0,.3);color:#e9f7ff;font-size:12px;transition:opacity .25s,transform .25s; }
@@ -227,7 +238,7 @@
         <span>FROSTY <span>SOUND</span></span>
       </a>
       <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="siteLinks"><span></span><span></span><span></span></button>
-       <div class="nav-links" id="siteLinks"><a href="#features">Возможности</a><a href="#interface">Интерфейс</a><a href="#download">Загрузка</a></div>
+       <div class="nav-links" id="siteLinks"><a href="#features">Возможности</a><a href="#interface">Интерфейс</a><a href="#updates">Обновления</a><a href="#download">Загрузка</a></div>
       <a class="nav-cta" href="#download">Скачать <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 16v4h14v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </nav>
   </div>
@@ -271,11 +282,26 @@
         </div>
       </div>
     </section>
-    <section class="section wrap" id="download">
+    <section class="section wrap" id="updates">
+       <div class="section-top reveal"><div><div class="section-kicker">ИСТОРИЯ РЕЛИЗОВ</div><h2>Что нового<br>в Frosty Sound.</h2></div><p>Следите за обновлениями: здесь собраны новые возможности и улучшения каждой версии.</p></div>
+       <div class="release-list">
+         <article class="release-card glass-panel reveal">
+           <div class="release-head"><div class="release-version">v1.1.0 <span class="release-badge">ПОСЛЕДНЯЯ ВЕРСИЯ</span></div><time class="release-date" datetime="2026-11-06">6 ноября 2026</time></div>
+           <p>Больше музыки и контроля — Frosty Sound получил интеграцию с Яндекс.Музыкой и стал удобнее в повседневном использовании.</p>
+           <ul><li>Поиск и воспроизведение треков Яндекс.Музыки, открытие альбомов и рекомендации «Моя волна».</li><li>Загрузка списка «Мне нравится», автоматическое продолжение очереди и синхронизация лайков.</li><li>Кнопка получения токена Яндекс.Музыки и понятная настройка подключения.</li><li>Новые стили иконок, настройка отображения версии и уведомление о новых релизах.</li><li>Исправления ошибок воспроизведения, очереди и загрузки обложек.</li></ul>
+         </article>
+         <article class="release-card glass-panel reveal">
+           <div class="release-head"><div class="release-version">v1.0.0</div><span class="release-date">Первый релиз</span></div>
+           <p>Первая версия Frosty Sound для Windows — локальный музыкальный плеер с настраиваемым стеклянным интерфейсом.</p>
+           <ul><li>Локальная музыкальная коллекция, плейлисты, избранное и очередь воспроизведения.</li><li>Эквалайзер, темы оформления, визуальные эффекты и мини-плеер.</li></ul>
+         </article>
+       </div>
+     </section>
+     <section class="section wrap" id="download">
       <div class="download-panel glass-panel reveal">
         <div><div class="section-kicker">НАЧНИТЕ СЕЙЧАС</div><h2>Пусть музыка<br>будет ближе.</h2><p>Установите Frosty Sound на Windows и соберите любимые треки в одном месте.</p></div>
         <div class="download-actions"><a class="button" id="downloadButton" href="https://drive.usercontent.google.com/download?id=1XEeXV5AOrPIKKOJy6QxaPTN0dJg2vwoR&amp;export=download&amp;authuser=0" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 16v4h14v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="drive-icon" aria-hidden="true"><img src="https://www.gstatic.com/images/branding/productlogos/drive_2026/v1/web-48dp/logo_drive_2026_color_1x_web_48dp.png" alt=""></span>Скачать с Google Drive</a>
-           <a class="button secondary" id="githubDownloadButton" href="https://github.com/vanavanek88-hash/frosty-sound/releases/download/v1.0.0/FrostySound-Setup-1.0.0.exe" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.02-.7.08-.69.08-.69 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.63 4 1.87.1-.73.4-1.23.69-1.51-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.56 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.61 5.24-5.1 5.52.4.35.74 1.03.74 2.08V22c0 .29.2.63.77.52A11.1 11.1 0 0 0 12 .9Z"/></svg>Скачать с GitHub</a><small id="downloadNote">Windows 10+ · Версия 1.0.0</small></div>
+           <a class="button secondary" id="githubDownloadButton" href="https://github.com/vanavanek88-hash/frosty-sound/releases/download/v1.1.0/FrostySound-Setup-1.1.0.exe" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.02-.7.08-.69.08-.69 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.63 4 1.87.1-.73.4-1.23.69-1.51-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.56 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.61 5.24-5.1 5.52.4.35.74 1.03.74 2.08V22c0 .29.2.63.77.52A11.1 11.1 0 0 0 12 .9Z"/></svg>Скачать с GitHub</a><small id="downloadNote">Windows 10+ · Версия 1.1.0</small></div>
       </div>
     </section>
   </main>
