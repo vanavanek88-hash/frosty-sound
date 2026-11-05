@@ -164,12 +164,20 @@
     .download-panel::after { content:"";position:absolute;width:340px;height:340px;right:7%;top:-210px;border-radius:50%;background:rgba(82,191,231,.16);filter:blur(30px);pointer-events:none; }
     .download-panel h2 { font-size:clamp(30px,4vw,44px); }
     .download-panel p { max-width:500px;margin:14px 0 0;color:#a6bbc9;font-size:14px;line-height:1.7; }
-    .download-actions { display:flex;flex-direction:column;align-items:center;gap:10px;flex:none;z-index:1; }
+    .download-actions { display:flex;flex-direction:column;align-items:stretch;gap:10px;flex:none;z-index:1;min-width:250px; }
     .download-actions small { color:#8ca2b1;font-size:10px; }
-    .download-actions .button { min-width:210px; }
+    .download-actions small { text-align:center; }
+     .download-actions .button { min-width:250px; }
+     .download-actions .button.secondary { color:#e8f6ff; }
+     .drive-icon { width:22px;height:22px;display:grid;place-items:center;flex:none;background:transparent; }
+     #downloadButton { color:#10251d;background:linear-gradient(110deg,#34a853 0%,#fbbc04 52%,#4285f4 100%);border-color:rgba(255,255,255,.32);box-shadow:0 8px 28px rgba(52,168,83,.2),inset 0 1px rgba(255,255,255,.45); }
+     #downloadButton:hover { box-shadow:0 13px 34px rgba(52,168,83,.3),inset 0 1px rgba(255,255,255,.55); }
+     .drive-icon img { width:17px;height:17px;object-fit:contain;filter:drop-shadow(0 1px 2px rgba(0,0,0,.2)); }
+     #githubDownloadButton { animation:none; }
+     #githubDownloadButton:hover { animation:none; }
     .download-actions .button[aria-disabled="true"] { opacity:.78; }
     @keyframes download-pulse { 0%,100% { box-shadow:0 8px 28px rgba(71,177,219,.19),inset 0 1px rgba(255,255,255,.8); } 50% { box-shadow:0 10px 38px rgba(71,177,219,.42),0 0 0 7px rgba(131,224,255,.07),inset 0 1px rgba(255,255,255,.85); } }
-    #downloadButton { animation:download-pulse 2.8s ease-in-out infinite; }
+    #downloadButton { animation:none; }
     #downloadButton:hover { animation-play-state:paused; }
     footer { margin-top:55px;border-top:1px solid rgba(208,237,255,.1);padding:26px 0 35px;color:#8095a5;font-size:11px; }
     .footer-row { display:flex;justify-content:space-between;align-items:center;gap:20px; }
@@ -266,7 +274,8 @@
     <section class="section wrap" id="download">
       <div class="download-panel glass-panel reveal">
         <div><div class="section-kicker">НАЧНИТЕ СЕЙЧАС</div><h2>Пусть музыка<br>будет ближе.</h2><p>Установите Frosty Sound на Windows и соберите любимые треки в одном месте.</p></div>
-        <div class="download-actions"><a class="button" id="downloadButton" href="https://github.com/vanavanek88-hash/frosty-sound/releases/download/v1.0.0/FrostySound-Setup-1.0.0.exe"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 16v4h14v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Скачать установщик</a><small id="downloadNote">Windows 10+ · Версия 1.0.0</small></div>
+        <div class="download-actions"><a class="button" id="downloadButton" href="https://drive.usercontent.google.com/download?id=1XEeXV5AOrPIKKOJy6QxaPTN0dJg2vwoR&amp;export=download&amp;authuser=0" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 16v4h14v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="drive-icon" aria-hidden="true"><img src="https://www.gstatic.com/images/branding/productlogos/drive_2026/v1/web-48dp/logo_drive_2026_color_1x_web_48dp.png" alt=""></span>Скачать с Google Drive</a>
+           <a class="button secondary" id="githubDownloadButton" href="https://github.com/vanavanek88-hash/frosty-sound/releases/download/v1.0.0/FrostySound-Setup-1.0.0.exe" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.02-.7.08-.69.08-.69 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.63 4 1.87.1-.73.4-1.23.69-1.51-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.56 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.61 5.24-5.1 5.52.4.35.74 1.03.74 2.08V22c0 .29.2.63.77.52A11.1 11.1 0 0 0 12 .9Z"/></svg>Скачать с GitHub</a><small id="downloadNote">Windows 10+ · Версия 1.0.0</small></div>
       </div>
     </section>
   </main>
@@ -299,34 +308,7 @@
       if (!siteLinks.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
     });
     document.querySelector('#year').textContent = new Date().getFullYear();
-    const downloadButton = document.querySelector('#downloadButton');
-    const downloadNote = document.querySelector('#downloadNote');
-    const showToast = (message) => {
-      toast.textContent = message;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
-    };
-    downloadButton.addEventListener('click', (event) => {
-      if (downloadButton.getAttribute('aria-disabled') !== 'true') return;
-      event.preventDefault();
-      showToast('Ссылка на установщик пока не настроена.');
-    });
-    fetch('./version.json', { cache: 'no-store' })
-      .then((response) => {
-        if (!response.ok) throw new Error('version.json unavailable');
-        return response.json();
-      })
-      .then((release) => {
-        if (typeof release.version === 'string' && release.version.trim()) {
-          downloadNote.textContent = `Windows 10+ · Версия ${release.version.trim()}`;
-        }
-        if (typeof release.downloadUrl === 'string' && /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/releases\/download\//.test(release.downloadUrl)) {
-          downloadButton.href = release.downloadUrl;
-          downloadButton.removeAttribute('aria-disabled');
-        }
-      })
-      .catch(() => {});
+    // Ссылки на Google Drive и GitHub указаны непосредственно в кнопках.
     const revealItems = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const observer = new IntersectionObserver((entries) => {
